@@ -20,27 +20,32 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<Product> getById(@PathVariable UUID id) throws Exception {
         return ResponseEntity.ok().body(productService.getById(id));
     }
 
+    @CrossOrigin
     @GetMapping("/list")
     public ResponseEntity<List<Product>> getAll(){
         return ResponseEntity.ok().body(productService.getAll());
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Product> create(@RequestBody Product productRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.create(productRequest));
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<Product> update(@PathVariable UUID id,
                                           @RequestBody Product productRequest) throws Exception {
         return ResponseEntity.ok().body(productService.update(id, productRequest));
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable UUID id) throws Exception {
         if(productService.delete(id)){
