@@ -1,6 +1,6 @@
 package com.crud.app.service.impl;
 
-import com.crud.app.model.Product;
+import com.crud.app.domain.entity.Product;
 import com.crud.app.repository.ProductRepository;
 import com.crud.app.service.ProductService;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +14,7 @@ import java.util.UUID;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+
     public ProductServiceImpl(ProductRepository productRepository){
         this.productRepository = productRepository;
     }

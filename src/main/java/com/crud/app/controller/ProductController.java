@@ -1,6 +1,8 @@
 package com.crud.app.controller;
 
-import com.crud.app.model.Product;
+import com.crud.app.domain.dto.ProductDTO;
+import com.crud.app.domain.entity.Product;
+import com.crud.app.domain.mapper.ProductMapper;
 import com.crud.app.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,27 +23,28 @@ public class ProductController {
 
     @CrossOrigin
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getById(@PathVariable UUID id) throws Exception {
-        return ResponseEntity.ok().body(productService.getById(id));
+    public ResponseEntity<ProductDTO> getById(@PathVariable UUID id) throws Exception {
+        return ResponseEntity.ok().body(ProductMapper.INSTANCE.toDto(productService.getById(id)));
     }
 
     @CrossOrigin
     @GetMapping("/list")
-    public ResponseEntity<List<Product>> getAll(){
-        return ResponseEntity.ok().body(productService.getAll());
+    public ResponseEntity<List<ProductDTO>> getAll(){
+        return ResponseEntity.ok().body(ProductMapper.INSTANCE.toDto(productService.getAll()));
     }
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<Product> create(@RequestBody Product productRequest){
-        return ResponseEntity.status(HttpStatus.CREATED).body(productService.create(productRequest));
+    public ResponseEntity<ProductDTO> create(@RequestBody Product productRequest){
+        return ResponseEntity.status(HttpStatus.CREATED).body(ProductMapper.INSTANCE.toDto(productService
+                .create(productRequest)));
     }
 
     @CrossOrigin
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable UUID id,
-                                          @RequestBody Product productRequest) throws Exception {
-        return ResponseEntity.ok().body(productService.update(id, productRequest));
+    public ResponseEntity<ProductDTO> update(@PathVariable UUID id,
+                                             @RequestBody Product productRequest) throws Exception {
+        return ResponseEntity.ok().body(ProductMapper.INSTANCE.toDto(productService.update(id, productRequest)));
     }
 
     @CrossOrigin

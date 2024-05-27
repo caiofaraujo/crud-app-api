@@ -1,4 +1,4 @@
-package com.crud.app.model;
+package com.crud.app.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

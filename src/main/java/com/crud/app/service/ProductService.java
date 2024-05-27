@@ -1,6 +1,6 @@
 package com.crud.app.service;
 
-import com.crud.app.model.Product;
+import com.crud.app.domain.entity.Product;
 import java.util.List;
 import java.util.UUID;
 
